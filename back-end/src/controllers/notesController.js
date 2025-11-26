@@ -2,7 +2,7 @@ import Note from "../models/Note.js";
 
 export async function getAllNotes(_, res) {
   try {
-    const notes = (await Note.find()).toSorted({createAt:-1});
+    const notes = await Note.find().sort({ createdAt: -1 });
     res.status(200).json(notes);
   } catch (error) {
     console.error("Erro no controle de getAllNotes", error);
